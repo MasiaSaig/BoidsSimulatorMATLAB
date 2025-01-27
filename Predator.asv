@@ -127,7 +127,7 @@ classdef Predator < handle
             end
             for i=1:predatorsNum
                 distance = sqrt((obj.position(1) - predators(i).position(1))^2 + (obj.position(2) - predators(i).position(2))^2);
-                if distance <= 8
+                if distance <= 10
                         obj.idx_closeNeighbor = obj.idx_closeNeighbor + 1;
                         obj.close_neighbors(1, obj.idx_closeNeighbor) = predators(i).position(1);
                         obj.close_neighbors(2, obj.idx_closeNeighbor) = predators(i).position(2);
@@ -168,8 +168,8 @@ classdef Predator < handle
                     avg_position = avg_position + [obj.neighbors(1, i) obj.neighbors(2, i)];
                 end
                 avg_position = avg_position / obj.idx_neighbor;
-                x = (avg_position(1) - obj.position(1)) * 0.2;
-                y = (avg_position(2) - obj.position(2)) * 0.2;
+                x = (avg_position(1) - obj.position(1)) * 0.5;
+                y = (avg_position(2) - obj.position(2)) * 0.5;
             end
         end
 

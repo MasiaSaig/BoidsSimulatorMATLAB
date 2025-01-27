@@ -286,10 +286,12 @@ classdef Boid < handle
             else
                 if predators_count ~= 0
                     close_predators_num = 0;
-                    for i = 1 : predators_count
+                    x_temp = obj.position(1);
+                    y_temp = obj.position(2);
+                    parfor i = 1 : predators_count
                         % Calculate distance between boid and predator.
-                        dx = obj.position(1) - predators(i).position(1);
-                        dy = obj.position(2) - predators(i).position(2);
+                        dx = x_temp - predators(i).position(1);
+                        dy = y_temp - predators(i).position(2);
                         distance = sqrt(dx^2 + dy^2);
                         % If distance is closer than set predator avoidance, then calculate vector that faces directly opposite from predator.
                         if distance < Boid.predatorAvoidanceMultiplier
